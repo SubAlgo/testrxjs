@@ -1,0 +1,30 @@
+<input type="text" id="search">
+<div id="result"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+
+<script>
+    let lastSearch = ''
+    const result = document.querySelector('#result')
+
+    function searchWiki(q) {
+        if (q === lastSearch) return
+        lastSearch = q
+        result.innerHTML = 'loading...'
+        apiSearch(q).then((res) => {
+            result.innerHTML = res
+        })
+    }
+
+    function apiSearch(q) {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve('result: ' + q), 2000)
+        })
+    }
+
+    const searchWikiDebounce = _.debounce(searchWiki, 1000)
+
+    document.querySelector('#search').addEventListener('keyup', (event) => {
+        searchWikiDebounce(event.target.value)
+    })
+</script>
