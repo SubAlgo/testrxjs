@@ -1,16 +1,11 @@
 const { Observable } = require('rxjs')
 
-const f = (cb) => {
-    cb(null,1)  //cb(error,value)
-    cb('T_T',2)
-    cb(null,2)
-}
-
-const ob = Observable.bindNodeCallback(f)()
+const ob = Observable.timer(2000, 1000)
+//const ob = Observable.timer(new Date('Aug 15, 2017'), 1000)
 
 ob.subscribe(
     (x) => {
-        console.log('next1 : ' + x)
+        console.log('next : ' + x)
     },
     (err) => {
         console.log('error: ' + err)

@@ -22,3 +22,8 @@ ev.emit('event', 2)
 ev.emit('event', 3)
 sub.unsubscribe()
 ev.emit('event', 4)
+
+/*
+next1 : 2
+next1 : 3
+*/

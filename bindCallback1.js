@@ -1,14 +1,12 @@
 const { Observable } = require('rxjs')
 
-const f = {
-    value:1,
-    getvalue (cb) {
-        cb(this.value)
-    }
+const f = (start, cb) => {
+    cb(start)
+    cb(start + 1)
+    cb(start + 2)
 }
 
-//const ob = Observable.bindCallback(f.getvalue.bind(f))()
-const ob = Observable.bindCallback((cb)=>f.getvalue(cb))() //(callback)(argument)
+const ob = Observable.bindCallback(f)(5) //(callback)(argument)
 
 
 ob.subscribe(

@@ -1,16 +1,16 @@
 const { Observable } = require('rxjs')
 
-const f = (cb) => {
-    cb(null,1)  //cb(error,value)
-    cb('T_T',2)
-    cb(null,2)
-}
+const ob = Observable.create((o) => {
+    for(let i = 0 ; i < 10; i++) {
+        o.next(i * i)
+    }
+    o.complete()
+})
 
-const ob = Observable.bindNodeCallback(f)()
 
 ob.subscribe(
     (x) => {
-        console.log('next1 : ' + x)
+        console.log('next : ' + x)
     },
     (err) => {
         console.log('error: ' + err)

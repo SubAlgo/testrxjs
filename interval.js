@@ -1,12 +1,6 @@
 const { Observable } = require('rxjs')
 
-const f = (cb) => {
-    cb(null,1)  //cb(error,value)
-    cb('T_T',2)
-    cb(null,2)
-}
-
-const ob = Observable.bindNodeCallback(f)()
+const ob = Observable.interval(1000)
 
 ob.subscribe(
     (x) => {
