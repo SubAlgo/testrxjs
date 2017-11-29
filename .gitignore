@@ -2,3 +2,12 @@
 node_modules/
 __MACOSX/
 *.zip
+anime.json
+anime_genres.json
+castings.json
+characters.json
+franchises.json
+genres.json
+installments.json
+people.json
+quotes.json
