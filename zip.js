@@ -1,21 +1,10 @@
 const { Observable } = require('rxjs')
 
-/*
-const ob = Observable.create((o) => {
-    for(let i = 0 ; i < 10; i++) {
-        o.next(i * i)
-    }
-    o.complete()
-})
-*/
 
-const ob = Observable.generate(
-    0,
-    (x) => x < 10,
-    (x) => x + 1,
-    (x) => x * x
-)
+const ob1 = Observable.interval(1000).take(5)
+const ob2 = Observable.interval(1500).take(3)
 
+const ob = Observable.zip(ob1, ob2)
 
 ob.subscribe(
     (x) => {

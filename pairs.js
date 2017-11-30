@@ -1,20 +1,7 @@
 const { Observable } = require('rxjs')
 
-/*
-const ob = Observable.create((o) => {
-    for(let i = 0 ; i < 10; i++) {
-        o.next(i * i)
-    }
-    o.complete()
-})
-*/
 
-const ob = Observable.generate(
-    0,
-    (x) => x < 10,
-    (x) => x + 1,
-    (x) => x * x
-)
+const ob = Observable.pairs({a: 1, b: 2, c: 3})
 
 
 ob.subscribe(

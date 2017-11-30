@@ -1,19 +1,12 @@
 const { Observable } = require('rxjs')
 
-/*
-const ob = Observable.create((o) => {
-    for(let i = 0 ; i < 10; i++) {
-        o.next(i * i)
-    }
-    o.complete()
-})
-*/
+const v = 'wtf'
 
-const ob = Observable.generate(
-    0,
-    (x) => x < 10,
-    (x) => x + 1,
-    (x) => x * x
+const ob = Observable.if(
+    () => v === 1, //condition
+    Observable.of('one'), // then
+    Observable.of(v), // else
+    Observable.throw('T_T')
 )
 
 
