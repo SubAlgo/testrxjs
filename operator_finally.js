@@ -22,10 +22,6 @@ const ob = Observable.of({})
     .subscribe(
         (x) => {console.log(x)},
         (err) => {console.log('Error: ' + err)},
-        () => 
-        { 
-            console.log('data loaded' ) 
-            loading = false 
-        }
+        () => { console.log('completed')}
     )
  
